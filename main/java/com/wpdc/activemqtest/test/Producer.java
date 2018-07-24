@@ -35,4 +35,11 @@ public class Producer {
             this.jmsMessagingTemplate.convertAndSend(this.topic, "topic"+i);
         }
     }
+
+    @ResponseBody
+    @RequestMapping("/product")
+    public Object product(String message) {
+        this .jmsMessagingTemplate.convertAndSend(this.queue, message);
+        return "200";
+    }
 }
